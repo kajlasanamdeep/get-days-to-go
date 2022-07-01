@@ -1,28 +1,19 @@
 module.exports = function (date) {
+    let today = new Date().getTime();
+    date = new Date(date).getTime();
 
-    let today = new Date();
-    date = new Date(date);
     if (date > today) {
-        let ms = (date - today) - 19800000;
-        let secs = parseInt(ms / 1000);
-        let mins = 0;
-        let hrs = 0;
-        let days = 0;
-
-        if (secs > 60) {
-            mins = parseInt(secs / 60);
-            secs = secs - (mins * 60);
-            if (mins > 60) {
-                hrs = parseInt(mins / 60);
-                mins = mins - (hrs * 60);
-                if (hrs > 24) {
-                    days = parseInt(hrs / 24);
-                    hrs = hrs - (days * 24);
-                }
-            }
-        }
+        let ms = (date - today);
+        let secs = Math.abs(new Date(ms).getSeconds() - new Date(0).getSeconds());
+        let mins = Math.abs(new Date(ms).getMinutes() - new Date(1800000).getMinutes());
+        let hrs = Math.abs(new Date(ms).getHours() - new Date(21600000).getHours());
+        let days = Math.abs(new Date(ms).getDate() - new Date(0).getDate());
+        let month = Math.abs(new Date(ms).getMonth() - new Date(0).getMonth());
+        let year = Math.abs(new Date(ms).getFullYear() - new Date(0).getFullYear());
 
         return {
+            year:year,
+            month:month,
             days: days,
             hrs: hrs,
             mins: mins,
@@ -30,31 +21,21 @@ module.exports = function (date) {
         }
     }
     else {
-        let ms = (today - date) + 19800000;
-        let secs = parseInt(ms / 1000);
-        let mins = 0;
-        let hrs = 0;
-        let days = 0;
-
-        if (secs > 60) {
-            mins = parseInt(secs / 60);
-            secs = secs - (mins * 60);
-            if (mins > 60) {
-                hrs = parseInt(mins / 60);
-                mins = mins - (hrs * 60);
-                if (hrs > 24) {
-                    days = parseInt(hrs / 24);
-                    hrs = hrs - (days * 24);
-                }
-            }
-        }
+        let ms = (today - date);
+        let secs = Math.abs(new Date(0).getSeconds() - new Date(ms).getSeconds());
+        let mins = Math.abs(new Date(0).getMinutes() - new Date(ms + 1800000).getMinutes());
+        let hrs = Math.abs(new Date(0).getHours() - new Date(ms + 18000000).getHours());
+        let days = Math.abs(new Date(0).getDate() - new Date(ms).getDate());
+        let month = Math.abs(new Date(0).getMonth() - new Date(ms).getMonth());
+        let year = Math.abs(new Date(0).getFullYear() - new Date(ms).getFullYear());
 
         return {
+            year: -year,
+            month: -month,
             days: -days,
             hrs: -hrs,
             mins: -mins,
             secs: -secs
         }
-
     }
 }

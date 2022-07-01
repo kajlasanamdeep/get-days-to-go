@@ -1,4 +1,4 @@
-const getDaysToGo = require('get-days-to-go');
+const getDaysToGo = require('./index');
 
-let remaining = getDaysToGo("2022-07-06");
-console.log(remaining.days,remaining.hrs,remaining.mins,remaining.secs);
+let remaining = getDaysToGo("2022-07-15");
+console.log(remaining);
