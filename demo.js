@@ -1,4 +1,3 @@
-const getDaysToGo = require('./index');
-
-let remaining = getDaysToGo("2022-07-15");
+const getDaysToGo = require('get-days-to-go');
+let remaining = getDaysToGo("2022-07-05");
 console.log(remaining);

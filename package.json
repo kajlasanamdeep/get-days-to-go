@@ -1,6 +1,6 @@
 {
   "name": "get-days-to-go",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "package for finding no. of days left to future date ",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/kajlasanamdeep/get-days-to-go#readme",
   "dependencies": {
-    "get-days-to-go": "^6.0.0"
+    "get-days-to-go": "^2.1.0"
   }
 }
